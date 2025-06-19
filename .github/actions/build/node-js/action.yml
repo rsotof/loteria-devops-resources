@@ -46,7 +46,7 @@ runs:
         retention-days: 14
 
   deploy:
-    - name: 'Dummy deploy'
+      name: 'Dummy deploy'
       needs: build
       runs-on: ubuntu-latest
       environment: 
