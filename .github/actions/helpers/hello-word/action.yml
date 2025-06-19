@@ -1,0 +1,21 @@
+name: 'Hello World'
+description: 'mi primer "Hello World"'
+author: 'Rafael'
+
+inputs:
+  comentario:
+    description: 'Comentario que se muestra en la salida'
+    required: true
+    default: 'Hola Mundo'
+
+runs:
+  using: 'composite'
+  steps:
+
+    - name: 'Obtener codigo fuente'
+      uses: actions/checkout@v4
+
+    - name: 'Comando echo'
+      run: |
+        echo "El comentario es: ${{ inputs.comentario }}"
+        echo "##################"
