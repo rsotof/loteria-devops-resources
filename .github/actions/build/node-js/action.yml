@@ -34,11 +34,14 @@ runs:
       run: npm run build
       shell: bash
 
+    - name: Node Version
+      run: node --version
+      shell: bash
+
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
         name: ${{ github.run_id }}
         path: dist/
         retention-days: 14
-
-
+                
