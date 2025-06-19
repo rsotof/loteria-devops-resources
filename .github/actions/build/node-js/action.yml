@@ -1,0 +1,44 @@
+name: 'Instalar node js'
+description: 'Instala node js en el runner de GitHub Actions'
+author: 'Rafael'
+
+inputs:
+  version:
+    description: 'version de node js a instalar'
+    required: true
+    default: '16.x'
+
+runs:
+  using: 'composite'
+  steps:
+
+    - name: 'Obtener codigo fuente'
+      uses: actions/checkout@v4
+
+    - name: 'Instalar node js'
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${ inputs.version }
+
+    - name: 'Terminando de la instalacion'
+      run: |
+        echo "Terminando de la instalacion de : ${{ inputs.version }}"
+        echo "##################"
+      shell: bash
+
+    - name: Install dependencies
+      run: npm install
+      shell: bash
+
+    - name: Build Project
+      run: npm run build
+      shell: bash
+
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ github.run_id }}
+        path: dist/
+        retention-days: 14
+
+        
