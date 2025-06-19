@@ -1,1 +1,1 @@
-# loteria-devops-resources
+# Devops Resources
